@@ -19,7 +19,7 @@ def get_occurance(key):
     with open('king-i.txt') as f:
         lines = f.readlines()
     for i in range(len(lines)):
-        matches = list(re.finditer(key, lines[i]))
+        matches = list(re.finditer(key.lower(), lines[i].lower()))
         for match in matches:
             in_sentence = get_sentence(lines, i, match.start(), match.end(), key)
             result.append(
