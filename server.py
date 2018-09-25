@@ -9,9 +9,9 @@ def get_sentence(lines, line_no, start, end, key):
     starting_sentence = "".join(lines[:line_no - 1]) + lines[line_no][:start]
 
     ending_sentence = lines[line_no][end:] + "".join(lines[line_no + 1:])
-    starting_sentence = starting_sentence[starting_sentence.rfind('.') + 1:]
-    ending_sentence = ending_sentence[:ending_sentence.find('.')]
-    return (starting_sentence + key + ending_sentence).replace("\n", "")
+    starting_sentence = starting_sentence[max(starting_sentence.rfind('.'), starting_sentence.rfind('!'))+ 1:]
+    ending_sentence = ending_sentence[:min(ending_sentence.find('.'), ending_sentence.find('!'))+1]
+    return (starting_sentence + key + ending_sentence).replace("\n", "").strip()
 
 
 def get_occurance(key):
